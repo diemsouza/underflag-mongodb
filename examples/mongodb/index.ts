@@ -23,9 +23,6 @@ const print = async (underflag: Underflag, key: string) => {
     const dataProvider = new MongodbDataProvider({ db });
     const underflag = new Underflag({ dataProvider });
 
-    // load all features from data provider to memory
-    // await underflag.loadAll();
-
     // check feature flags
     const list: any[] = [];
     for (const key of config.features) {

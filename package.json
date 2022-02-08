@@ -1,6 +1,6 @@
 {
   "name": "underflag-mongodb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "mongodb provider for underflag",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
     "mongodb"
   ],
   "author": "Diego Souza",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dieg0s0uza/underflag-mongodb/issues"
   },
@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "mongodb": "^4.3.0",
-    "underflag": "^1.0.0"
+    "underflag": "^1.3.0"
   }
 }
