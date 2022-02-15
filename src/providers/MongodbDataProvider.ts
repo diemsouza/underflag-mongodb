@@ -1,4 +1,4 @@
-import { IDataProvider, Feature } from 'underflag';
+import { IDataProvider, BaseFeature } from 'underflag';
 import * as mongoDB from 'mongodb';
 
 const DEFAULT_COLLECTION = 'features';
@@ -12,21 +12,21 @@ interface Options {
 
 export class MongodbDataProvider implements IDataProvider {
     private db: mongoDB.Db;
-    private collection: mongoDB.Collection<Feature>;
+    private collection: mongoDB.Collection<BaseFeature>;
 
     constructor(options: Options) {
         this.db = options.db;
-        this.collection = this.db.collection<Feature>(options.collectionName || DEFAULT_COLLECTION);
+        this.collection = this.db.collection<BaseFeature>(options.collectionName || DEFAULT_COLLECTION);
     }
 
-    async getAll(): Promise<Feature[]> {
+    async getAll(): Promise<BaseFeature[]> {
         const dataResult = await this.collection.find({}, { projection: { _id: 0 } }).toArray();
-        return dataResult as Feature[];
+        return dataResult as BaseFeature[];
     }
 
-    async get(key: string): Promise<Feature | undefined> {
+    async get(key: string): Promise<BaseFeature | undefined> {
         const dataResult = await this.collection.findOne({ key }, { projection: { _id: 0 } });
         if (!dataResult) return undefined;
-        return dataResult as Feature;
+        return dataResult as BaseFeature;
     }
 }

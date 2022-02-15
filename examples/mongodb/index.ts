@@ -1,4 +1,4 @@
-import { Underflag, isOn } from 'underflag';
+import { Underflag } from 'underflag';
 import { MongodbDataProvider } from '../../src/providers/MongodbDataProvider';
 import { MongoClient } from 'mongodb';
 import config from './config.json';
@@ -7,7 +7,7 @@ const print = async (underflag: Underflag, key: string) => {
     const data = await underflag.getFeature(key);
     return {
         key,
-        status: isOn(data) ? 'on' : 'off',
+        status: data?.isOn() ? 'on' : 'off',
         value: data?.value,
         origin: data?.origin
     };
